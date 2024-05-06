@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+    <title> JackChi Cafe </title>
+
+    <!-- external reference to css file-->
+    <head>
+        <link rel="stylesheet" href="../CSS/jackchi.css" />
+
+    </head>
+    <body>
+        <header>
+        <h1> JackChi Cafe </h1>
+        </header>
+
+        <!--navigation-->
+        <div class="topnav">
+            <a class="active" href="JackChiCafe.html">About</a>
+            <a href="servicesmenu.html">Services/Menu</a>
+            <a href="stublog.html">Student Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="coognews.html">Coogs in the News</a>
+        </div>
+
+        <div> <!-- introduction -->
+            <br> <h1> JackChi Cafe Services and Menu </h1>
+
+            <p> JackChi Cafe offers a variety of tasty dishes for UH students and staff to enjoy! </p> <br>
+
+            <h2> Foods Offered at our Cafe: </h2>
+
+
+            <div class="slideshow">
+                <!-- Slideshow images to show off the food we offer -->
+                <img src="../Images/pixabay.jpg">
+                <img src="../Images/unsplash.jpg">
+                <img src="../Images/vecteezy.jpg">
+              </div>
+              
+              <script> // function for slide show
+                var slideIndex = 0;
+                showSlides();
+              
+                function showSlides() {
+                  var i;
+                  var slides = document.querySelectorAll('.slideshow img');
+                  for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";  
+                  }
+                  slideIndex++;
+                  if (slideIndex > slides.length) {slideIndex = 1}    
+                  slides[slideIndex-1].style.display = "block";  
+                  setTimeout(showSlides, 2000); // Changes images every 2 secs
+                }
+              </script>
+
+              <div id="surprise">
+
+                <p id="panfi"></p>
+            <p> Wait 5 seconds for a message from our founder!!! ( Message pops up above and you can refresh to see it again! )</p>
+
+            <script>
+                async function mydisplay() // displays the message function
+                {
+                    let myPromise = new Promise(function(resolve){
+                        setTimeout(function(){resolve("WOW, those are some tasty foods! - Panfilo");},5000);
+                    });
+            
+
+                    document.getElementById("panfi").innerHTML=await myPromise;
+                }
+
+                mydisplay();
+            </script>
+
+            </div>
+
+
+            <!-- Chef special of the day -->
+            <div> <br> <br> <br>
+                <h2>Chef Special of the Day: Chi Coffee </h2>
+                <img id="stockvault" src="../Images/stockvault.jpg"> <br>
+
+            
+                <button onclick="calories()">Click for Nutritional Info</button>
+    
+                <script>
+                    function calories()
+                    {
+                        alert("Calories: 75, Sugars: 30g")
+                    }
+                </script>
+    
+            </div>
+
+
+
+
+            <div> <!-- win a lunch with panfilo as a way to get more ppl to come to the cafe-->
+
+              <br> <br> <br>
+            <img id="jackpray" src="../Images/pray.jpg"> <br>
+            <a href="#" onclick="alert('Congrats!!! You won lunch with Panfilo!!!');"> Click Here for a chance to WIN!</a> <br> <br> <br>
+
+            </div>
+
+          
+
+
+               <!-- Menu Order Form -->
+
+               <div>
+                <form id="fmenu">
+                    <h1 id="ftitle">Place Your Order Below: </h1>
+                    
+                    Name: <input type="text"> <br>
+                    Email: <input type="text"> <br>
+                    Phone Number: <input type="text"> <br>
+                    <br> <br>
+
+                    <div id="cof">
+                    <h3 id="chicoff"> Chi Coffee </h3>
+                    <img id="order1" src="../Images/stockvault.jpg"> <br>
+
+                    Please select a quantity: <!-- option dropdown for amount-->
+                    <select id="num">
+                        <option value="1"> -- </option>
+                        <option value="2"> 0 </option>
+                        <option value="3"> 1 </option>
+                        <option value="4"> 2 </option>
+                        <option value="5"> 3 </option>
+
+                    </select>
+                    <button onclick="ordercof();"> Add to Cart </button> <!-- button for fucntion --> <br>
+
+                    <label for="quantity">Sugars:</label> <!-- quantity selector for the sugars in the coffee-->
+                    <input type="number" id="quantity" name="quantity" value="0" min="0" max="10" step="1">
+                    <button type="button" onclick="document.getElementById('quantity').stepDown()">-</button>
+                    <button type="button" onclick="document.getElementById('quantity').stepUp()">+</button>  <br>
+
+
+                    </div> <br>
+
+                 <!-- add pancake -->
+                 <div id="panc"> 
+                    <h3 id="pancake"> Jack Pancakes </h3>
+                    <img id="order2" src="../Images/pixabay.jpg"> <br>
+
+                    Please select a quantity: <!-- option dropdown for amount-->
+                    <select id="num2">
+                        <option value="6"> -- </option>
+                        <option value="7"> 0 </option>
+                        <option value="8"> 1 </option>
+                        <option value="9"> 2 </option>
+                        <option value="10"> 3 </option>
+
+                    </select>
+                    <button onclick="orderpanc();"> Add to Cart </button> <!-- button for function -->
+
+
+                    </div> <br>
+
+                    <!--radio buttons for payment type-->
+                    Form of payment: <input type="radio" name="pay"> Cash 
+                    <input type="radio" name="pay"> Card
+
+                
+
+                    <br>
+                    <!--function for validation on quantity for coffee -->
+
+                    <script>
+                        function ordercof() {
+                            var value = document.getElementById("num").value;
+                    // validation check for value
+                            if (value == 1) {
+                                alert('Select a quantity for coffee');
+                            } else if (value >= 2 || value <= 5) {
+                                alert('Item added to cart!');
+                            }
+                        }
+                    </script>
+
+        
+
+                    
+                       <!--function for validation on quantity for pancakes -->
+                       <script>
+                        function orderpanc() {
+                            var value = document.getElementById("num2").value;
+                    // validation check for value
+                            if (value == 6) {
+                                alert('Select a quantity for pancakes');
+                            } else if (value >= 7 || value <=10) {
+                                alert('Item added to cart!');
+                            }
+                        }
+                    </script> <br>
+
+                    <button onclick="alert('Order Submitted')"> Place Order </button> <!-- button for submitting -->
+
+
+
+
+                </form>
+
+                </div> <br> <br> <br>
+
+
+            <!-- Google maps location-->
+            <div class="gmap">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d867.4827569620886!2d-95.65221669802432!3d29.57661004926793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640e1a564d4628d%3A0xb77c2da44c9040da!2sUniversity%20of%20Houston%20College%20of%20Technology!5e0!3m2!1sen!2sus!4v1712553618118!5m2!1sen!2sus" width="550" height="550"></iframe>
+            </div>
+           <br> <br> <p>
+                This cafe is located at the University of Houston Sugar Land, in the SAB building, on the first floor. 
+            </p>
+
+        
+            </div>
+
+         
+
+        <!-- footer information-->
+        <footer>
+            <p>&copy; 2024 JackChi Cafe. All rights reserved.</p>
+            <p> If you wish to learn more about the owner you can do so here: <a href="biography.html"> Owner's Biography </a> </p>
+        </footer>
+
+    </body>
+</html>
